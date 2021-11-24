@@ -17,6 +17,10 @@ public class Repository {
         return size;
     }
 
+    public Contract[] getContracts() {
+        return contracts;
+    }
+
     /**
      * method of adding a contract by identifier
      */
