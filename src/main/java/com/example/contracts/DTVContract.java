@@ -32,10 +32,10 @@ public class DTVContract extends Contract{
         if (o == null || getClass() != o.getClass()) return false;
         DTVContract that = (DTVContract) o;
         return id == that.id &&
-                startDate == that.startDate &&
-                endDate == that.endDate &&
                 contractNumber == that.contractNumber &&
-                contractOwner == that.contractOwner &&
+                Objects.equals(startDate, that.startDate) &&
+                Objects.equals(endDate, that.endDate) &&
+                Objects.equals(contractOwner, that.contractOwner) &&
                 Objects.equals(channelPackage, that.channelPackage);
     }
 
