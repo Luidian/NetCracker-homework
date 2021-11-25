@@ -5,6 +5,9 @@ import com.example.contracts.DTVContract;
 import com.example.contracts.MCContract;
 import com.example.contracts.WIContract;
 
+import java.util.Optional;
+import java.util.function.Predicate;
+
 /**
  * The class describes the repository where contracts are stored
  * @author  Alexanrd Spaskin
@@ -101,5 +104,19 @@ public class Repository {
             System.arraycopy(this.contracts, 0, temp, 0, this.contracts.length);
             this.contracts = temp;
         }
+    }
+
+    /**
+     * method of search by predicate
+     * @param pred
+     * @return Contract if found, otherwise return empty
+     */
+    public Optional<Contract> search(Predicate<Contract> pred){
+        for (Contract i : this.contracts){
+            if (pred.test(i)){
+                return Optional.of(i);
+            }
+        }
+        return Optional.empty();
     }
 }
