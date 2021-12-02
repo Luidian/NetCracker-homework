@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.Human.Human;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
