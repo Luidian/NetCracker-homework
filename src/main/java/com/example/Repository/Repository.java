@@ -4,7 +4,9 @@ import com.example.contracts.Contract;
 import com.example.contracts.DTVContract;
 import com.example.contracts.MCContract;
 import com.example.contracts.WIContract;
+import com.example.sorted.MergeSort;
 
+import java.util.Comparator;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -21,7 +23,9 @@ public class Repository {
     }
 
     public Contract[] getContracts() {
-        return contracts;
+        Contract[] c = new Contract[size];
+        System.arraycopy(contracts, 0, c, 0, contracts.length);
+        return c;
     }
 
     /**
@@ -118,5 +122,10 @@ public class Repository {
             }
         }
         return Optional.empty();
+    }
+
+    public void sort(Comparator<Contract> comp){
+        MergeSort mergeSort = new MergeSort();
+        mergeSort.sort(comp, contracts);
     }
 }

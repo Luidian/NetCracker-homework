@@ -27,10 +27,10 @@ public class MergeSort implements ISorted {
 
         System.arraycopy(contracts, 0, l, 0, middle);
 
-        if (length - middle >= 0) System.arraycopy(contracts, middle, r, middle, length - middle);
+        if (length - middle >= 0) System.arraycopy(contracts, middle, r, middle - middle, length - middle);
 
-        mergeSort(contractComparator, l, length);
-        mergeSort(contractComparator, r, length);
+        mergeSort(contractComparator, l, middle);
+        mergeSort(contractComparator, r, length - middle);
 
         merge(contractComparator, contracts, l, r, middle, length - middle);
     }
@@ -49,7 +49,7 @@ public class MergeSort implements ISorted {
         int j = 0;
         int k = 0;
         while (i < left && j < right) {
-            if (contractComparator.compare(contracts[i], contracts[j]) > 0) {
+            if (contractComparator.compare(l[i], r[j]) < 0) {
                 contracts[k++] = l[i++];
             } else {
                 contracts[k++] = r[j++];
@@ -59,7 +59,7 @@ public class MergeSort implements ISorted {
             contracts[k++] = l[i++];
         }
         while(j < right){
-            contracts[k++] = r[i++];
+            contracts[k++] = r[j++];
         }
     }
 }
