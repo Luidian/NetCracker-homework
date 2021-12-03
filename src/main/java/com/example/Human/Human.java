@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.Objects;
 
+/**
+ * The class describes information about a person
+ * @author  Alexanrd Spaskin
+ */
 public class Human {
     private int id;
     private String firstName;
@@ -11,14 +15,18 @@ public class Human {
     private String middleName;
     private LocalDate dateOfBirthday;
     private String gender;
+    private int passportSeries;
+    private int passportID;
 
-    public Human(int id, String firstName, String name, String middleName, LocalDate dateOfBirthday, String gender){
+    public Human(int id, String firstName, String name, String middleName, String gender, LocalDate dateOfBirthday, int passportSeries, int passportID){
         this.id = id;
         this.firstName = firstName;
         this.name = name;
         this.middleName = middleName;
         this.dateOfBirthday = dateOfBirthday;
         this.gender = gender;
+        this.passportSeries = passportSeries;
+        this.passportID = passportID;
     }
 
     /**
@@ -57,6 +65,14 @@ public class Human {
         return gender;
     }
 
+    public int getPassportSeries() {
+        return passportSeries;
+    }
+
+    public int getPassportID() {
+        return passportID;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -81,17 +97,25 @@ public class Human {
         this.gender = gender;
     }
 
+    public void setPassportSeries(int passportSeries) {
+        this.passportSeries = passportSeries;
+    }
+
+    public void setPassportID(int passportID) {
+        this.passportID = passportID;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Human human = (Human) o;
-        return id == human.id && firstName.equals(human.firstName) && name.equals(human.name) && middleName.equals(human.middleName) && dateOfBirthday.equals(human.dateOfBirthday) && gender.equals(human.gender);
+        return id == human.id && passportSeries == human.passportSeries && passportID == human.passportID && Objects.equals(firstName, human.firstName) && Objects.equals(name, human.name) && Objects.equals(middleName, human.middleName) && Objects.equals(dateOfBirthday, human.dateOfBirthday) && Objects.equals(gender, human.gender);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, name, middleName, dateOfBirthday, gender);
+        return Objects.hash(id, firstName, name, middleName, dateOfBirthday, gender, passportSeries, passportID);
     }
 
     @Override
@@ -103,6 +127,8 @@ public class Human {
                 ", middleName='" + middleName + '\'' +
                 ", dateOfBirthday=" + dateOfBirthday +
                 ", gender='" + gender + '\'' +
+                ", passportSeries=" + passportSeries +
+                ", passportID=" + passportID +
                 '}';
     }
 }

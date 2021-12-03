@@ -11,9 +11,9 @@ class HumanTest {
 
     @Test
     void calculateAge() {
-        Human human = new Human(0, "Fn", "N", "Mn", LocalDate.of(1234, 5, 6), "m");
-        Human human2 = new Human(0, "Fn", "N", "Mn", LocalDate.of(2015, 1, 25), "m");
-        Human human3 = new Human(0, "Fn", "N", "Mn", LocalDate.of(2021, 10, 26), "m");
+        Human human = new Human(0, "Fn", "N", "Mn","m",  LocalDate.of(1234, 5, 6), 1234, 123456780);
+        Human human2 = new Human(0, "Fn", "N", "Mn","m", LocalDate.of(2015, 1, 25),  1234, 123456781);
+        Human human3 = new Human(0, "Fn", "N", "Mn", "m",LocalDate.of(2021, 10, 26),  1234, 123456782);
 
         int actual   = human.calculateAge();
         int actual2 = human2.calculateAge();

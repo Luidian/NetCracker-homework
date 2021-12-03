@@ -16,8 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RepositoryTest {
 
-    Human h1 = new Human(0, "fn", "n", "mn", LocalDate.of(1234, 5, 6), "m");
-    Human h2 = new Human(1, "fn1", "n1", "mn1", LocalDate.of(1235, 6, 7), "m");
+    Human h1 = new Human(0, "fn", "n", "mn","m", LocalDate.of(1234, 5, 6),  1234, 1234567890);
+    Human h2 = new Human(1, "fn1", "n1", "mn1", "m", LocalDate.of(1235, 6, 7),  1234, 123456789);
     WIContract wi1 = new WIContract(1, LocalDate.of(1234, 5, 6), LocalDate.of(1234, 6, 6), 4, h1,100);
     WIContract wi2 = new WIContract(2, LocalDate.of(1234, 5, 6), LocalDate.of(1234, 6, 6), 3, h2,80);
     WIContract wi4 = new WIContract(2, LocalDate.of(1234, 5, 6), LocalDate.of(1234, 6, 6), 5, h2,50);
