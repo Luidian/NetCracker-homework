@@ -28,10 +28,9 @@ public class CsvParser {
      * Method parses csv file
      * @param path path to csv file
      * @param repository the storage to which the new data will be added
-     * @return object of class Repository
      * @throws CsvParseException
      */
-    public Repository parse(final String path, Repository repository) throws CsvParseException{
+    public void parse(final String path, Repository repository) throws CsvParseException{
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.d");
         CSVParser parser = new CSVParserBuilder().withSeparator(';').build();
         CSVReader csvReader = null;
@@ -76,7 +75,6 @@ public class CsvParser {
                 }
             }
         }
-        return repository;
     }
 
     /**
