@@ -1,4 +1,4 @@
-package com.example;
+package com.example.Human;
 
 import com.example.Human.Human;
 import org.junit.jupiter.api.Test;
