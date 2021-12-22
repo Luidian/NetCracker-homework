@@ -1,7 +1,7 @@
-package com.example.Parser;
+package com.example.parser;
 
-import com.example.Human.Human;
-import com.example.Repository.Repository;
+import com.example.human.Human;
+import com.example.repository.Repository;
 import com.example.contracts.DTVContract;
 import com.example.contracts.MCContract;
 import com.example.contracts.WIContract;

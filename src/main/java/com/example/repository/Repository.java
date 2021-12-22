@@ -1,4 +1,4 @@
-package com.example.Repository;
+package com.example.repository;
 
 import com.example.contracts.Contract;
 import com.example.contracts.DTVContract;

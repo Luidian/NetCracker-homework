@@ -1,6 +1,6 @@
 package com.example.contracts;
 
-import com.example.Human.Human;
+import com.example.human.Human;
 
 import java.time.LocalDate;
 import java.util.Objects;

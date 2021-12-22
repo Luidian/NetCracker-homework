@@ -1,4 +1,4 @@
-package com.example.Human;
+package com.example.human;
 
 import java.time.LocalDate;
 import java.time.Period;

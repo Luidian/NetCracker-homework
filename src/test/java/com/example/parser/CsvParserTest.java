@@ -1,6 +1,6 @@
-package com.example.Parser;
+package com.example.parser;
 
-import com.example.Repository.Repository;
+import com.example.repository.Repository;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

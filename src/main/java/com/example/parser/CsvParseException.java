@@ -1,4 +1,4 @@
-package com.example.Parser;
+package com.example.parser;
 
 public class CsvParseException extends Exception {
 
