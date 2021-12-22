@@ -8,9 +8,11 @@ public class ContractDateValidator implements IValidator{
     @Override
     public ValidationMessage validation(Contract contract) {
         if (!contract.getStartDate().isBefore(contract.getEndDate())){
-            message.setStatus("Error");
-            message.setMessage("Contract start date is less than end date");
-            message.setInValidField("getEndDate");
+            ValidationMessage messageError = new ValidationMessage();
+            messageError.setStatus("Error");
+            messageError.setMessage("Contract start date is less than end date");
+            messageError.setInValidField("getEndDate");
+            return messageError;
         }
         return message;
     }

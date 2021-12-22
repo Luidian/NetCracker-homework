@@ -8,9 +8,11 @@ public class HumanAgeValidator implements IValidator{
     @Override
     public ValidationMessage validation(Contract contract) {
         if (contract.getContractOwner().calculateAge() < 18){
-            message.setStatus("Red risk");
-            message.setMessage("The contract holder is less than 18 years old ");
-            message.setInValidField("dateOfBirthday");
+            ValidationMessage messageError = new ValidationMessage();
+            messageError.setStatus("Red risk");
+            messageError.setMessage("The contract holder is less than 18 years old ");
+            messageError.setInValidField("dateOfBirthday");
+            return messageError;
         }
         return message;
     }
