@@ -5,6 +5,9 @@ import com.example.repository.Repository;
 import com.example.contracts.DTVContract;
 import com.example.contracts.MCContract;
 import com.example.contracts.WIContract;
+import com.example.validators.ContractDateValidator;
+import com.example.validators.HumanAgeValidator;
+import com.example.validators.IValidator;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
@@ -17,13 +20,14 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * CsvParser
  * @author  Alexanrd Spaskin
  */
 public class CsvParser {
-
     /**
      * Method parses csv file
      * @param path path to csv file
@@ -31,6 +35,10 @@ public class CsvParser {
      * @throws CsvParseException
      */
     public void parse(final String path, Repository repository) throws CsvParseException{
+        ArrayList<IValidator> validators = new ArrayList<>();
+        validators.add(new ContractDateValidator());
+        validators.add(new HumanAgeValidator());
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.d");
         CSVParser parser = new CSVParserBuilder().withSeparator(';').build();
         CSVReader csvReader = null;
@@ -45,20 +53,29 @@ public class CsvParser {
                     switch (values[10]){
                         case ("mobile"):
                             MCContract mcContract = mobile(values[0], values[1], values[2], h, values[11], values[12], values[13], formatter);
-                            repository.add(mcContract);
+                            boolean validMcContract = validators.stream().map(v -> v.validation(mcContract)).anyMatch(vm -> vm.getStatus() == "Ok");
+                            if(validMcContract) {
+                                repository.add(mcContract);
+                            }
                             break;
                         case ("internet"):
                             WIContract wiContract = internet(values[0], values[1], values[2], h, values[11], formatter);
-                            repository.add(wiContract);
+                            boolean validWiContract = validators.stream().map(v -> v.validation(wiContract)).anyMatch(vm -> vm.getStatus() == "Ok");
+                            if(validWiContract) {
+                                repository.add(wiContract);
+                            }
                             break;
                         case ("tv"):
                             DTVContract dtvContract = tv(values[0], values[1], values[2], h, values[11], formatter);
-                            repository.add(dtvContract);
+                            boolean validDtvContract= validators.stream().map(v -> v.validation(dtvContract)).anyMatch(vm -> vm.getStatus() == "Ok");
+                            if(validDtvContract) {
+                                repository.add(dtvContract);
+                            }
                             break;
-
                         default:
                             throw new CsvParseException("Data entry error: row " + String.valueOf(lineNum));
                     }
+
                 }
             } catch (CsvValidationException | IOException e) {
                 throw new CsvParseException(e);
