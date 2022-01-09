@@ -1,11 +1,13 @@
 package com.example.sorted;
 
+import com.example.annotations.Default;
 import com.example.contracts.Contract;
 
 import java.util.Comparator;
 /**
  * @author  Alexanrd Spaskin
  */
+@Default
 public class MergeSort implements ISorted {
     @Override
     public void sort(Comparator<Contract> contractComparator, Contract[] contractArray){

@@ -1,10 +1,11 @@
 package com.example.repository;
 
+import com.example.annotations.AutoInjectable;
 import com.example.contracts.Contract;
 import com.example.contracts.DTVContract;
 import com.example.contracts.MCContract;
 import com.example.contracts.WIContract;
-import com.example.sorted.MergeSort;
+import com.example.sorted.ISorted;
 
 import java.util.Comparator;
 import java.util.Optional;
@@ -17,6 +18,9 @@ import java.util.function.Predicate;
 public class Repository {
     private int size = 0;
     private Contract[] contracts = new Contract[size];
+
+    @AutoInjectable
+    private ISorted sorted;
 
     public int getSize() {
         return size;
@@ -124,8 +128,11 @@ public class Repository {
         return Optional.empty();
     }
 
-    public void sort(Comparator<Contract> comp){
-        MergeSort mergeSort = new MergeSort();
-        mergeSort.sort(comp, contracts);
+    /**
+     * method of sorting contacts
+     * @param comparator sorting comparator
+     */
+    public void sort(Comparator<Contract> comparator){
+        sorted.sort(comparator, contracts);
     }
 }
