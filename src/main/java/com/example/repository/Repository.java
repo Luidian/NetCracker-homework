@@ -5,6 +5,7 @@ import com.example.contracts.Contract;
 import com.example.contracts.DTVContract;
 import com.example.contracts.MCContract;
 import com.example.contracts.WIContract;
+import com.example.jdbc.JdbcPostgres;
 import com.example.sorted.ISorted;
 
 import java.util.Comparator;
@@ -134,5 +135,16 @@ public class Repository {
      */
     public void sort(Comparator<Contract> comparator){
         sorted.sort(comparator, contracts);
+    }
+
+    public void saveInDatabase(){
+        JdbcPostgres jdbcPostgres = new JdbcPostgres();
+        jdbcPostgres.saveRepository(contracts);
+    }
+
+    public void recoveryInDatabase(){
+        JdbcPostgres jdbcPostgres = new JdbcPostgres();
+        this.contracts = jdbcPostgres.recoveryRepository();
+        this.size = contracts.length;
     }
 }
