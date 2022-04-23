@@ -2,6 +2,7 @@ package com.example.contracts;
 
 import com.example.human.Human;
 
+import javax.xml.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -10,8 +11,17 @@ import java.util.Objects;
  * The class inherits from the Contract class and has a new field "channel package"
  * @author  Alexanrd Spaskin
  */
+@XmlRootElement(name = "DTVContract")
+@XmlType(propOrder = {
+        "channelPackage"
+})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DTVContract extends Contract{
+
+    @XmlElement
     private String channelPackage;
+
+    public DTVContract(){}
 
     public DTVContract(int id, LocalDate startDate, LocalDate endDate, int contractNumber, Human contractOwner, String channelPackage){
         super(id, startDate, endDate, contractNumber, contractOwner);

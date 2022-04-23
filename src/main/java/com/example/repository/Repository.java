@@ -8,6 +8,7 @@ import com.example.contracts.WIContract;
 import com.example.jdbc.JdbcPostgres;
 import com.example.sorted.ISorted;
 
+import javax.xml.bind.annotation.*;
 import java.util.Comparator;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -16,15 +17,26 @@ import java.util.function.Predicate;
  * The class describes the repository where contracts are stored
  * @author  Alexanrd Spaskin
  */
+@XmlRootElement(name="Repository")
+@XmlType(propOrder = {
+        "contracts",
+        "size"
+})
+@XmlSeeAlso({DTVContract.class, MCContract.class, WIContract.class})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Repository {
+
+    @XmlElement
     private int size = 0;
+
+    @XmlElement
     private Contract[] contracts = new Contract[size];
 
+    @XmlTransient
     @AutoInjectable
     private ISorted sorted;
 
-    public int getSize() {
-        return size;
+    public Repository() {
     }
 
     public Contract[] getContracts() {
@@ -146,5 +158,9 @@ public class Repository {
         JdbcPostgres jdbcPostgres = new JdbcPostgres();
         this.contracts = jdbcPostgres.recoveryRepository();
         this.size = contracts.length;
+    }
+
+    public int getSize() {
+        return size;
     }
 }

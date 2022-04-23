@@ -2,6 +2,7 @@ package com.example.contracts;
 
 import com.example.human.Human;
 
+import javax.xml.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -10,10 +11,25 @@ import java.util.Objects;
  * The class is inherited from the Contract class and has new fields "minutes", "sms" and "traffic"
  * @author  Alexanrd Spaskin
  */
+@XmlRootElement(name = "MCContract")
+@XmlType(propOrder = {
+        "minutes",
+        "sms",
+        "traffic"
+})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class MCContract extends Contract{
+
+    @XmlElement
     private int minutes;
+
+    @XmlElement
     private int sms;
+
+    @XmlElement
     private int traffic;
+
+    public MCContract(){}
 
     public MCContract(int id, LocalDate startDate, LocalDate endDate, int contractNumber, Human contractOwner, int minutes, int sms, int traffic){
         super(id, startDate, endDate, contractNumber, contractOwner);

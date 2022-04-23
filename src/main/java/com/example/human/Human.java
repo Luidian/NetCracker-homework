@@ -1,5 +1,9 @@
 package com.example.human;
 
+import com.example.jaxb.LocalDateXMLAdapter;
+
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Objects;
@@ -8,15 +12,38 @@ import java.util.Objects;
  * The class describes information about a person
  * @author  Alexanrd Spaskin
  */
+@XmlRootElement(name = "contractOwner")
+@XmlType(propOrder = {"id","firstName", "name", "middleName", "dateOfBirthday", "gender", "passportSeries", "passportID"})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Human {
+
+    @XmlElement
     private int id;
+
+    @XmlElement
     private String firstName;
+
+    @XmlElement
     private String name;
+
+    @XmlElement
     private String middleName;
+
+    @XmlElement
+    @XmlJavaTypeAdapter(LocalDateXMLAdapter.class)
     private LocalDate dateOfBirthday;
+
+    @XmlElement
     private String gender;
+
+    @XmlElement
     private int passportSeries;
+
+    @XmlElement
     private int passportID;
+
+    public Human() {
+    }
 
     public Human(int id, String firstName, String name, String middleName, String gender, LocalDate dateOfBirthday, int passportSeries, int passportID){
         this.id = id;

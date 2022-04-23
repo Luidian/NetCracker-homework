@@ -1,7 +1,10 @@
 package com.example.contracts;
 
 import com.example.human.Human;
+import com.example.jaxb.LocalDateXMLAdapter;
 
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -9,12 +12,36 @@ import java.util.Objects;
  * The class describes the person who owns the contract
  * @author  Alexanrd Spaskin
  */
+@XmlRootElement(name = "Contract")
+@XmlType(propOrder = {
+        "id",
+        "startDate",
+        "endDate",
+        "contractNumber",
+        "contractOwner"
+})
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlSeeAlso({DTVContract.class, MCContract.class, WIContract.class})
 public abstract class Contract {
+
+    @XmlElement
     protected int id;
+
+    @XmlElement
+    @XmlJavaTypeAdapter(LocalDateXMLAdapter.class)
     protected LocalDate startDate;
+
+    @XmlElement
+    @XmlJavaTypeAdapter(LocalDateXMLAdapter.class)
     protected LocalDate endDate;
+
+    @XmlElement
     protected int contractNumber;
+
+    @XmlElement
     protected Human contractOwner;
+
+    protected Contract() {}
 
     protected Contract(int id, LocalDate startDate, LocalDate endDate, int contractNumber, Human contractOwner) {
         this.id = id;

@@ -2,6 +2,7 @@ package com.example.contracts;
 
 import com.example.human.Human;
 
+import javax.xml.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -10,8 +11,17 @@ import java.util.Objects;
  * The class is inherited from the Contract class and has new field speed Internet
  * @author  Alexanrd Spaskin
  */
+@XmlRootElement(name = "WIContract")
+@XmlType(propOrder = {
+        "speed"
+})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class WIContract extends Contract{
+
+    @XmlElement
     private int speed;
+
+    public WIContract() {}
 
     public WIContract(int id, LocalDate startDate, LocalDate endDate, int contractNumber, Human contractOwner, int speed){
         super(id, startDate, endDate, contractNumber, contractOwner);

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Repository>
+    <contracts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="wiContract">
+        <id>1</id>
+        <startDate>1234-05-06</startDate>
+        <endDate>1234-06-06</endDate>
+        <contractNumber>4</contractNumber>
+        <contractOwner>
+            <id>1</id>
+            <firstName>fn1</firstName>
+            <name>n1</name>
+            <middleName>mn1</middleName>
+            <dateOfBirthday>1234-05-06</dateOfBirthday>
+            <gender>m</gender>
+            <passportSeries>1234</passportSeries>
+            <passportID>1234567890</passportID>
+        </contractOwner>
+        <speed>100</speed>
+    </contracts>
+    <contracts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="wiContract">
+        <id>2</id>
+        <startDate>1234-05-06</startDate>
+        <endDate>1234-06-06</endDate>
+        <contractNumber>3</contractNumber>
+        <contractOwner>
+            <id>2</id>
+            <firstName>fn2</firstName>
+            <name>n2</name>
+            <middleName>mn2</middleName>
+            <dateOfBirthday>1235-06-07</dateOfBirthday>
+            <gender>m</gender>
+            <passportSeries>1234</passportSeries>
+            <passportID>123456789</passportID>
+        </contractOwner>
+        <speed>80</speed>
+    </contracts>
+    <contracts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="dtvContract">
+        <id>1</id>
+        <startDate>1234-05-06</startDate>
+        <endDate>1234-06-06</endDate>
+        <contractNumber>1</contractNumber>
+        <contractOwner>
+            <id>3</id>
+            <firstName>fn3</firstName>
+            <name>n3</name>
+            <middleName>mn3</middleName>
+            <dateOfBirthday>1234-05-06</dateOfBirthday>
+            <gender>m</gender>
+            <passportSeries>1234</passportSeries>
+            <passportID>1234567890</passportID>
+        </contractOwner>
+        <channelPackage>all</channelPackage>
+    </contracts>
+    <contracts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="mcContract">
+        <id>1</id>
+        <startDate>1234-05-06</startDate>
+        <endDate>1234-06-06</endDate>
+        <contractNumber>6</contractNumber>
+        <contractOwner>
+            <id>4</id>
+            <firstName>fn4</firstName>
+            <name>n4</name>
+            <middleName>mn4</middleName>
+            <dateOfBirthday>1235-06-07</dateOfBirthday>
+            <gender>m</gender>
+            <passportSeries>1234</passportSeries>
+            <passportID>123456789</passportID>
+        </contractOwner>
+        <minutes>200</minutes>
+        <sms>500</sms>
+        <traffic>5000</traffic>
+    </contracts>
+    <size>4</size>
+</Repository>
